@@ -8,7 +8,9 @@ const Root = ()  => {
     <main>
       <Header />
       <SearchBar />
-      <Outlet />
+      <section id="display-section">
+        <Outlet />
+      </section>
     </main>
   )
 }

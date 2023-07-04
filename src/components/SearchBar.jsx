@@ -2,7 +2,7 @@ import React from 'react'
 
 const SearchBar = () => {
   return (
-    <div>SearchBar</div>
+    <section id="search-section">Search Bar</section>
   )
 }
 
