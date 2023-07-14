@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   courses: [
     {
-      id: 1,
+      id: 'C1',
       title: 'Course 1',
       description: 'This is course 1',
       videos: [
@@ -16,7 +16,7 @@ const initialState = {
       ],
     },
     {
-      id: 2,
+      id: 'C2',
       title: 'Course 2',
       description: 'This is course 2',
       videos: [
@@ -29,7 +29,7 @@ const initialState = {
       ],
     },
     {
-      id: 3,
+      id: 'C3',
       title: 'Course 3',
       description: 'This is course 3',
       videos: [
@@ -42,7 +42,7 @@ const initialState = {
       ],
     },
     {
-      id: 4,
+      id: 'C4',
       title: 'Course 3',
       description: 'This is course 3',
       videos: [
@@ -55,14 +55,42 @@ const initialState = {
       ],
     },
   ],
+  manuals: [
+    {
+      id: 'M1',
+      title: 'Manual 1',
+      description: 'This is manual 1',
+      url: 'https://example.pdf',
+    },
+    {
+      id: 'M2',
+      title: 'Manual 2',
+      description: 'This is manual 2',
+      url: 'https://example.pdf',
+    },
+  ],
+  programs: [
+    {
+      id: 'P1',
+      title: 'Program 1',
+      description: 'This is program 1',
+      file: 'example.rar',
+    },
+    {
+      id: 'P2',
+      title: 'Program 2',
+      description: 'This is program 2',
+      file: 'example.rar',
+    },
+  ],
   isLoading: false,
   error: null,
 };
 
-const coursesSlice = createSlice({
-  name: 'courses',
+const contentSlice = createSlice({
+  name: 'content',
   initialState,
   reducers: {},
 });
 
-export default coursesSlice.reducer;
+export default contentSlice.reducer;
