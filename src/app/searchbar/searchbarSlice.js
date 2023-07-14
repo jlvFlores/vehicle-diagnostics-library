@@ -4,13 +4,13 @@ const searchbarSlice = createSlice({
   name: 'searchbar',
   initialState: {
     searchValue: '',
-    currentTab: 'recent',
+    selectedCategories: ['courses', 'manuals', 'programs'],
   },
   reducers: {
     setSearchValue: (state, action) => ({ ...state, searchValue: action.payload }),
-    setCurrentTab: (state, action) => ({ ...state, currentTab: action.payload }),
+    setSelectedCategories: (state, action) => ({ ...state, selectedCategories: action.payload }),
   },
 });
 
-export const { setSearchValue, setCurrentTab } = searchbarSlice.actions;
+export const { setSearchValue, setSelectedCategories } = searchbarSlice.actions;
 export default searchbarSlice.reducer;

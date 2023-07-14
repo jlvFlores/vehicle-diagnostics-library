@@ -11,7 +11,7 @@ const SearchItem = ({ id, tab, title }) => (
 );
 
 SearchItem.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   tab: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };
