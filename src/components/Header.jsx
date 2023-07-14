@@ -6,10 +6,7 @@ const Header = () => (
     <h1 className="logo">E.M.A.T.</h1>
     <nav>
       <div>
-        <NavLink className="header-link" to="/">Recents</NavLink>
-        <NavLink className="header-link" to="/courses">Courses</NavLink>
-        <NavLink className="header-link" to="/manuals">Manuals</NavLink>
-        <NavLink className="header-link" to="/programs">Programs</NavLink>
+        <NavLink className="header-link" to="/">Return</NavLink>
       </div>
       <div>
         <NavLink className="header-link" to="/login">Login</NavLink>

@@ -1,14 +1,6 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { setCurrentTab } from '../../app/searchbar/searchbarSlice';
+import React from 'react';
 
 const Manuals = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(setCurrentTab('manuals'));
-  }, [dispatch]);
-
   return (
     <>Manuals</>
   );
