@@ -1,9 +1,7 @@
 import React from 'react';
 
-const Programs = () => {
-  return (
-    <>Programs</>
-  );
-};
+const Programs = () => (
+  <>Programs</>
+);
 
 export default Programs;

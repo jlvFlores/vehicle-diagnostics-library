@@ -4,13 +4,11 @@ const searchbarSlice = createSlice({
   name: 'searchbar',
   initialState: {
     searchValue: '',
-    selectedCategories: ['courses', 'manuals', 'programs'],
   },
   reducers: {
     setSearchValue: (state, action) => ({ ...state, searchValue: action.payload }),
-    setSelectedCategories: (state, action) => ({ ...state, selectedCategories: action.payload }),
   },
 });
 
-export const { setSearchValue, setSelectedCategories } = searchbarSlice.actions;
+export const { setSearchValue } = searchbarSlice.actions;
 export default searchbarSlice.reducer;

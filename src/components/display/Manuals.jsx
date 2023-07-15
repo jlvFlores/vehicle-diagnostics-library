@@ -1,9 +1,7 @@
 import React from 'react';
 
-const Manuals = () => {
-  return (
-    <>Manuals</>
-  );
-};
+const Manuals = () => (
+  <>Manuals</>
+);
 
 export default Manuals;

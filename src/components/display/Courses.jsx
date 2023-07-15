@@ -1,9 +1,7 @@
 import React from 'react';
 
-const Courses = () => {
-  return (
-    <>Courses</>
-  );
-};
+const Courses = () => (
+  <>Courses</>
+);
 
 export default Courses;

@@ -73,7 +73,7 @@ nav {
   justify-content: center;
   align-items: center;
   background-color: var(--primary-color);
-  padding: .5rem 0;
+  padding: 0.5rem 0;
 }
 
 #search-form > * {
