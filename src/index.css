@@ -59,6 +59,11 @@ nav {
   text-decoration: none;
 }
 
+.return-link {
+  background-color: var(--primary-color);
+  color: var(--light-one);
+}
+
 /* SEARCH */
 #search-section {
   grid-area: search;
