@@ -18,6 +18,7 @@ const Courses = ({ selectedCourse }) => {
     <>
       <div>
         <iframe
+          className="primary-vid"
           src={`https://www.youtube.com/embed/${selectedVideo.videoId}`}
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

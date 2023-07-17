@@ -113,10 +113,14 @@ nav {
 }
 
 iframe {
-  aspect-ratio: 16/9;
   box-shadow: 0 0 5px 0 var(--primary-color);
   border: none;
   width: 100%;
+}
+
+/* COURSES */
+.primary-vid {
+  aspect-ratio: 16/9;
 }
 
 .primary-vid-title {
@@ -142,4 +146,29 @@ iframe {
 .slider-box > img {
   box-shadow: 0 0 5px 0 var(--primary-color);
   width: 100%;
+}
+
+/* MANUALS */
+.manual-header {
+  background-color: var(--primary-color);
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  padding: .5rem;
+}
+
+.download-btn {
+  background-color: var(--light-one);
+  color: var(--primary-color);
+  border: none;
+  border-radius: 5px;
+  padding: 0 .5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.manual-iframe {
+  height: 74vh;
 }

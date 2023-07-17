@@ -81,13 +81,13 @@ const initialState = {
       id: 'M1',
       title: 'Manual 1',
       description: 'This is manual 1',
-      url: 'https://example.pdf',
+      url: 'https://www.newline.co/fullstack-react/assets/media/sGEMe/MNzue/30-days-of-react-ebook-fullstackio.pdf',
     },
     {
       id: 'M2',
       title: 'Manual 2',
       description: 'This is manual 2',
-      url: 'https://example.pdf',
+      url: 'https://www.theseus.fi/bitstream/handle/10024/342721/Phan_Hong_Duc.pdf',
     },
   ],
   programs: [
