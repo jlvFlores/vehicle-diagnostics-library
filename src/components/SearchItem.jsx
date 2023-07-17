@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
-const SearchItem = ({ id, tab, title }) => (
+const SearchItem = ({ id, title }) => (
   <div className="search-item">
-    <NavLink to={`/${tab}/${id}`}>
+    <NavLink to={`/content/${id}`}>
       <p>{title}</p>
     </NavLink>
   </div>
@@ -12,7 +12,6 @@ const SearchItem = ({ id, tab, title }) => (
 
 SearchItem.propTypes = {
   id: PropTypes.string.isRequired,
-  tab: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 };
 

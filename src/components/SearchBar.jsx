@@ -37,20 +37,20 @@ const SearchBar = () => {
   };
 
   const renderSearchItems = () => {
-    const filterItems = (items, itemName) => items
+    const filterItems = (items) => items
       .filter((item) => (searchValue.toLowerCase() === '' ? item : item.title.toLowerCase().includes(searchValue)))
-      .map((item) => <SearchItem key={item.id} id={item.id} tab={itemName} title={item.title} />);
+      .map((item) => <SearchItem key={item.id} id={item.id} title={item.title} />);
 
     const filteredItems = [];
 
     if (checkboxStates[0]) {
-      filteredItems.push(filterItems(courses, 'courses'));
+      filteredItems.push(filterItems(courses));
     }
     if (checkboxStates[1]) {
-      filteredItems.push(filterItems(manuals, 'manuals'));
+      filteredItems.push(filterItems(manuals));
     }
     if (checkboxStates[2]) {
-      filteredItems.push(filterItems(programs, 'programs'));
+      filteredItems.push(filterItems(programs));
     }
 
     return filteredItems.flat();

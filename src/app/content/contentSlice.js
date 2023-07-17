@@ -8,10 +8,19 @@ const initialState = {
       description: 'This is course 1',
       videos: [
         {
-          videoId: 1,
+          videoId: 'j_OwK2OzO8E',
           title: 'Video 1',
           description: 'This is video 1',
-          url: 'https://www.youtube.com/watch?v=1',
+        },
+        {
+          videoId: 'pKmM1N0MoC4',
+          title: 'Video 2',
+          description: 'This is video 2',
+        },
+        {
+          videoId: 'el6No1wNKf0',
+          title: 'Video 3',
+          description: 'This is video 3',
         },
       ],
     },
@@ -21,10 +30,14 @@ const initialState = {
       description: 'This is course 2',
       videos: [
         {
-          videoId: 1,
+          videoId: 'pKmM1N0MoC4',
           title: 'Video 1',
           description: 'This is video 1',
-          url: 'https://www.youtube.com/watch?v=1',
+        },
+        {
+          videoId: 'el6No1wNKf0',
+          title: 'Video 2',
+          description: 'This is video 2',
         },
       ],
     },
@@ -34,23 +47,31 @@ const initialState = {
       description: 'This is course 3',
       videos: [
         {
-          videoId: 1,
+          videoId: 'pKmM1N0MoC4',
           title: 'Video 1',
           description: 'This is video 1',
-          url: 'https://www.youtube.com/watch?v=1',
+        },
+        {
+          videoId: 'el6No1wNKf0',
+          title: 'Video 2',
+          description: 'This is video 2',
         },
       ],
     },
     {
       id: 'C4',
-      title: 'Course 3',
-      description: 'This is course 3',
+      title: 'Course 4',
+      description: 'This is course 4',
       videos: [
         {
-          videoId: 1,
+          videoId: 'pKmM1N0MoC4',
           title: 'Video 1',
           description: 'This is video 1',
-          url: 'https://www.youtube.com/watch?v=1',
+        },
+        {
+          videoId: 'el6No1wNKf0',
+          title: 'Video 2',
+          description: 'This is video 2',
         },
       ],
     },
