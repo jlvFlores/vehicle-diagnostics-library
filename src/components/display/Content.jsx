@@ -9,8 +9,9 @@ const Content = () => {
   const { id } = useParams();
   const { courses, manuals, programs } = useSelector((store) => store.content);
 
-  let selectedCourse; let selectedManual; let
-    selectedProgram;
+  let selectedCourse;
+  let selectedManual;
+  let selectedProgram;
 
   const renderContent = () => {
     switch (id.charAt(0)) {

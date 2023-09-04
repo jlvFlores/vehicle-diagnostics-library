@@ -155,7 +155,7 @@ iframe {
   font-weight: bold;
   display: flex;
   justify-content: space-between;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
 .download-btn {
@@ -163,12 +163,35 @@ iframe {
   color: var(--primary-color);
   border: none;
   border-radius: 5px;
-  padding: 0 .5rem;
+  padding: 0 0.5rem;
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
 }
 
 .manual-iframe {
-  height: 74vh;
+  height: 72.5vh;
+}
+
+/* PROGRAMS */
+.program-container {
+  background-color: var(--dark-three);
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.download-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.download-header > a {
+  color: #838cc8;
+  cursor: pointer;
+  font-size: 1rem;
+  text-decoration: underline;
 }
