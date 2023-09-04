@@ -1,3 +1,196 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :root {
-  --primary-color: #242424;
+  --primary-color: #1e2348;
+  --dark-one: #1e1e1e;
+  --dark-two: #242424;
+  --dark-three: #292929;
+  --light-one: #fff;
+  --light-two: #d4d4d4;
+
+  background-color: var(--dark-one);
+  color: var(--light-one);
+}
+
+main {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-areas:
+    "nav    nav"
+    "search display";
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 10vh 1fr;
+}
+
+/* HEADER */
+header {
+  background-color: var(--dark-three);
+  display: grid;
+  grid-area: nav;
+  grid-template-columns: 1fr 3fr;
+}
+
+.logo {
+  text-align: center;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  padding-right: 1rem;
+}
+
+.header-link {
+  color: var(--primary-color);
+  background-color: var(--light-two);
+  border-radius: 10px 10px 0 0;
+  border: 1px solid var(--light-one);
+  font-size: 1.5rem;
+  padding: 0 1rem;
+  text-decoration: none;
+}
+
+.return-link {
+  background-color: var(--primary-color);
+  color: var(--light-one);
+}
+
+/* SEARCH */
+#search-section {
+  grid-area: search;
+  background-color: var(--light-two);
+}
+
+#search-form {
+  width: 100%;
+  min-height: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color);
+  padding: 0.5rem 0;
+}
+
+#search-form > * {
+  width: 90%;
+}
+
+.checkbox-filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-item {
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  padding-left: 0.5rem;
+  width: 100%;
+  height: 2rem;
+}
+
+.search-item:nth-child(odd) {
+  background-color: var(--light-one);
+}
+
+/* DISPLAY */
+#display-section {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  grid-area: display;
+  padding: 2rem;
+  overflow-x: hidden;
+}
+
+iframe {
+  box-shadow: 0 0 5px 0 var(--primary-color);
+  border: none;
+  width: 100%;
+}
+
+/* COURSES */
+.primary-vid {
+  aspect-ratio: 16/9;
+}
+
+.primary-vid-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+  width: 100%;
+}
+
+.slider-box {
+  width: 20%;
+  background-color: transparent;
+  border: none;
+  color: var(--light-one);
+  text-align: start;
+}
+
+.slider-box > img {
+  box-shadow: 0 0 5px 0 var(--primary-color);
+  width: 100%;
+}
+
+/* MANUALS */
+.manual-header {
+  background-color: var(--primary-color);
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.download-btn {
+  background-color: var(--light-one);
+  color: var(--primary-color);
+  border: none;
+  border-radius: 5px;
+  padding: 0 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.manual-iframe {
+  height: 72.5vh;
+}
+
+/* PROGRAMS */
+.program-container {
+  background-color: var(--dark-three);
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.download-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.download-header > a {
+  color: #838cc8;
+  cursor: pointer;
+  font-size: 1rem;
+  text-decoration: underline;
 }
