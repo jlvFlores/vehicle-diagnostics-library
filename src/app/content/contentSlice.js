@@ -1,110 +1,37 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
+
+const headers = {
+  'Content-Type': 'application/json',
+  Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI5MzI5NmRiMi1jZjBkLTRkOGUtYjljZC04NmIzYmUyN2JlY2IiLCJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjk1NDA0MTA5LCJleHAiOjE2OTU0MDU5MDl9.jEzP2kwezoSuZEc_r4SW_mQqmrX3kkfYulFvbjlXXHo',
+};
+
+export const fetchContent = createAsyncThunk('content/fetchContent', async () => {
+  const url = 'http://127.0.0.1:4000/';
+  try {
+    const content = [];
+
+    const coursesResp = await axios.get(`${url}courses`, { headers });
+    const manualsResp = await axios.get(`${url}manuals`, { headers });
+    const programsResp = await axios.get(`${url}programs`, { headers });
+
+    content.push({
+      courses: coursesResp.data,
+      manuals: manualsResp.data,
+      programs: programsResp.data,
+    });
+
+    return content[0];
+  } catch (error) {
+    return error.message;
+  }
+});
 
 const initialState = {
-  courses: [
-    {
-      id: 'C1',
-      title: 'Course 1',
-      description: 'This is course 1',
-      videos: [
-        {
-          videoId: 'j_OwK2OzO8E',
-          title: 'Video 1',
-          description: 'This is video 1',
-        },
-        {
-          videoId: 'pKmM1N0MoC4',
-          title: 'Video 2',
-          description: 'This is video 2',
-        },
-        {
-          videoId: 'el6No1wNKf0',
-          title: 'Video 3',
-          description: 'This is video 3',
-        },
-      ],
-    },
-    {
-      id: 'C2',
-      title: 'Course 2',
-      description: 'This is course 2',
-      videos: [
-        {
-          videoId: 'pKmM1N0MoC4',
-          title: 'Video 1',
-          description: 'This is video 1',
-        },
-        {
-          videoId: 'el6No1wNKf0',
-          title: 'Video 2',
-          description: 'This is video 2',
-        },
-      ],
-    },
-    {
-      id: 'C3',
-      title: 'Course 3',
-      description: 'This is course 3',
-      videos: [
-        {
-          videoId: 'pKmM1N0MoC4',
-          title: 'Video 1',
-          description: 'This is video 1',
-        },
-        {
-          videoId: 'el6No1wNKf0',
-          title: 'Video 2',
-          description: 'This is video 2',
-        },
-      ],
-    },
-    {
-      id: 'C4',
-      title: 'Course 4',
-      description: 'This is course 4',
-      videos: [
-        {
-          videoId: 'pKmM1N0MoC4',
-          title: 'Video 1',
-          description: 'This is video 1',
-        },
-        {
-          videoId: 'el6No1wNKf0',
-          title: 'Video 2',
-          description: 'This is video 2',
-        },
-      ],
-    },
-  ],
-  manuals: [
-    {
-      id: 'M1',
-      title: 'Manual 1',
-      description: 'This is manual 1',
-      url: 'https://firebasestorage.googleapis.com/v0/b/portfolio-v2-data.appspot.com/o/CORSA_2002.pdf?alt=media&token=34699020-f5a8-4fd6-aed7-94a20f650564',
-    },
-    {
-      id: 'M2',
-      title: 'Manual 2',
-      description: 'This is manual 2',
-      url: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
-    },
-  ],
-  programs: [
-    {
-      id: 'P1',
-      title: 'Program1',
-      description: 'This is program 1',
-      file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
-    },
-    {
-      id: 'P2',
-      title: 'Program2',
-      description: 'This is program 2',
-      file: 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf',
-    },
-  ],
-  isLoading: false,
+  courses: [],
+  manuals: [],
+  programs: [],
+  isLoading: true,
   error: null,
 };
 
@@ -112,6 +39,32 @@ const contentSlice = createSlice({
   name: 'content',
   initialState,
   reducers: {},
+  extraReducers(builder) {
+    builder
+      .addCase(fetchContent.pending, (state) => ({
+        ...state, isLoading: true,
+      }))
+      .addCase(fetchContent.fulfilled, (state, action) => {
+        const { courses, manuals, programs } = action.payload;
+        const updateIDs = (array, prefix) => array.map((object, index) => ({
+          ...object,
+          id: `${prefix}${index + 1}`,
+        }));
+
+        return ({
+          ...state,
+          isLoading: false,
+          courses: updateIDs(courses, 'C'),
+          manuals: updateIDs(manuals, 'M'),
+          programs: updateIDs(programs, 'P'),
+        });
+      })
+      .addCase(fetchContent.rejected, (state, action) => ({
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      }));
+  },
 });
 
 export default contentSlice.reducer;
