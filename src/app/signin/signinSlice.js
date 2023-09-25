@@ -6,7 +6,7 @@ export const loginRequest = createAsyncThunk('signIn/signInRequest', async (data
   const response = await axios.post(`${url}login`, data);
   return {
     data: response.data,
-    token: response.headers['authorization'],
+    token: response.headers.authorization,
   };
 });
 
@@ -24,9 +24,9 @@ const signinSlice = createSlice({
         ...state, isLoading: true,
       }))
       .addCase(loginRequest.fulfilled, (state, action) => ({
-          ...state,
-          isLoading: false,
-          token: action.payload.token,
+        ...state,
+        isLoading: false,
+        token: action.payload.token,
       }))
       .addCase(loginRequest.rejected, (state, action) => ({
         ...state,
