@@ -2,6 +2,11 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { url } from '../requestKeys.json';
 
+export const signupRequest = createAsyncThunk('signIn/signInRequest', async (data) => {
+  const response = await axios.post(`${url}signup`, data);
+  return response.data;
+});
+
 export const loginRequest = createAsyncThunk('signIn/signInRequest', async (data) => {
   const response = await axios.post(`${url}login`, data);
   return {
@@ -29,6 +34,18 @@ const signinSlice = createSlice({
         token: action.payload.token,
       }))
       .addCase(loginRequest.rejected, (state, action) => ({
+        ...state,
+        isLoading: false,
+        error: action.payload,
+      }))
+      .addCase(signupRequest.pending, (state) => ({
+        ...state, isLoading: true,
+      }))
+      .addCase(signupRequest.fulfilled, (state) => ({
+        ...state,
+        isLoading: false,
+      }))
+      .addCase(signupRequest.rejected, (state, action) => ({
         ...state,
         isLoading: false,
         error: action.payload,
