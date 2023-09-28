@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { url } from '../requestKeys.json';
 
-export const signinRequest = createAsyncThunk('signIn/signInRequest', async ({route, data}) => {
+export const signinRequest = createAsyncThunk('signIn/signInRequest', async ({ route, data }) => {
   const response = await axios.post(`${url}${route}`, data);
 
   if (route === 'login') {
@@ -10,9 +10,8 @@ export const signinRequest = createAsyncThunk('signIn/signInRequest', async ({ro
       data: response.data,
       token: response.headers.authorization,
     };
-  } else {
-    return response.data;
   }
+  return response.data;
 });
 
 const signinSlice = createSlice({
