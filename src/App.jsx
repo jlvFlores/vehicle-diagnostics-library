@@ -4,6 +4,7 @@ import Root from './components/Root';
 import Home from './components/display/Home';
 import Content from './components/display/Content';
 import SignInForm from './components/SignInForm';
+import AccountConfirmation from './components/AccountConfirmation';
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
   },
   { path: '/login', element: <SignInForm actionType="login" /> },
   { path: '/register', element: <SignInForm actionType="register" /> },
+  { path: '/confirmation', element: <AccountConfirmation /> },
 ]);
 
 const App = () => (
