@@ -5,19 +5,12 @@ import { url } from '../requestKeys.json';
 export const signinRequest = createAsyncThunk('signIn/signInRequest', async ({ route, data }) => {
   const response = await axios.post(`${url}${route}`, data);
 
-  if (route === 'login') {
-    return {
-      data: response.data,
-      token: response.headers.authorization,
-    };
-  }
-  return response.data;
+  return response.headers.authorization;
 });
 
 const signinSlice = createSlice({
   name: 'signin',
   initialState: {
-    token: '',
     isLoading: true,
     error: null,
   },
@@ -27,11 +20,13 @@ const signinSlice = createSlice({
       .addCase(signinRequest.pending, (state) => ({
         ...state, isLoading: true,
       }))
-      .addCase(signinRequest.fulfilled, (state, action) => ({
-        ...state,
-        isLoading: false,
-        token: action.payload.token,
-      }))
+      .addCase(signinRequest.fulfilled, (state, action) => {
+        sessionStorage.setItem("token", action.payload);
+        return ({
+          ...state,
+          isLoading: false,
+        })
+      })
       .addCase(signinRequest.rejected, (state, action) => ({
         ...state,
         isLoading: false,
