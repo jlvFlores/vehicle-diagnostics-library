@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Navigate } from 'react-router';
 import Header from './Header';
 import { signinRequest } from '../app/signin/signinSlice';
 
 const SignInForm = ({ actionType }) => {
   const dispatch = useDispatch();
+  const { signedIn } = useSelector((store) => store.signin);
   const [formData, setFormData] = useState({ email: '', password: '' });
 
   const handleSubmit = (e) => {
@@ -20,14 +22,17 @@ const SignInForm = ({ actionType }) => {
   };
 
   return (
-    <main>
-      <Header />
-      <form onSubmit={handleSubmit} method="post">
-        <input type="email" name="email" id="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
-        <input type="password" name="password" id="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
-        <input type="submit" value={actionType} className="capitalize" />
-      </form>
-    </main>
+    <>
+      {signedIn ? <Navigate to="/" replace /> : null}
+      <main>
+        <Header />
+        <form onSubmit={handleSubmit} method="post">
+          <input type="email" name="email" id="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
+          <input type="password" name="password" id="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
+          <input type="submit" value={actionType} className="capitalize" />
+        </form>
+      </main>
+    </>
   );
 };
 

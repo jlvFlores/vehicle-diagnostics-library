@@ -11,6 +11,7 @@ export const signinRequest = createAsyncThunk('signIn/signInRequest', async ({ r
 const signinSlice = createSlice({
   name: 'signin',
   initialState: {
+    signedIn: false,
     isLoading: true,
     error: null,
   },
@@ -18,18 +19,22 @@ const signinSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(signinRequest.pending, (state) => ({
-        ...state, isLoading: true,
+        ...state,
+        isLoading: true,
+        signedIn: false,
       }))
       .addCase(signinRequest.fulfilled, (state, action) => {
-        sessionStorage.setItem("token", action.payload);
+        sessionStorage.setItem('token', action.payload);
         return ({
           ...state,
           isLoading: false,
-        })
+          signedIn: true,
+        });
       })
       .addCase(signinRequest.rejected, (state, action) => ({
         ...state,
         isLoading: false,
+        signedIn: false,
         error: action.payload,
       }));
   },
