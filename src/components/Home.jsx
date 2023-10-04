@@ -1,13 +1,13 @@
 import { useEffect } from 'react';
-import { Outlet } from 'react-router';
-import { useDispatch } from 'react-redux';
+import { Navigate, Outlet } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
 import Header from './Header';
 import SearchBar from './SearchBar';
 import { fetchContent } from '../app/content/contentSlice';
 
 const Home = () => {
   const dispatch = useDispatch();
-  const token = sessionStorage.getItem('token');
+  const { isSignedIn, token } = useSelector((store) => store.signin);
 
   useEffect(() => {
     dispatch(fetchContent({
@@ -16,15 +16,17 @@ const Home = () => {
     }));
   }, [dispatch, token]);
 
-  return (
-    <main>
-      <Header />
-      <SearchBar />
-      <section id="display-section">
-        <Outlet />
-      </section>
-    </main>
-  );
+  return !isSignedIn
+    ? <Navigate to="/login" replace />
+    : (
+      <main>
+        <Header />
+        <SearchBar />
+        <section id="display-section">
+          <Outlet />
+        </section>
+      </main>
+    );
 };
 
 export default Home;

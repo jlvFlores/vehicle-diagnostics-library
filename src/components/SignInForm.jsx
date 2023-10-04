@@ -7,8 +7,8 @@ import { signinRequest } from '../app/signin/signinSlice';
 
 const SignInForm = ({ actionType }) => {
   const dispatch = useDispatch();
-  const { signedIn } = useSelector((store) => store.signin);
   const [formData, setFormData] = useState({ email: '', password: '' });
+  const { isSignedIn } = useSelector((store) => store.signin);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,9 +21,9 @@ const SignInForm = ({ actionType }) => {
     setFormData({ ...formData, [name]: value });
   };
 
-  return (
-    <>
-      {signedIn ? <Navigate to="/" replace /> : null}
+  return isSignedIn
+    ? <Navigate to="/" replace />
+    : (
       <main>
         <Header />
         <form onSubmit={handleSubmit} method="post">
@@ -32,8 +32,7 @@ const SignInForm = ({ actionType }) => {
           <input type="submit" value={actionType} className="capitalize" />
         </form>
       </main>
-    </>
-  );
+    );
 };
 
 SignInForm.propTypes = {

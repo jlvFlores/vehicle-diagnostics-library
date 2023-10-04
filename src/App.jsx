@@ -5,13 +5,10 @@ import Recent from './components/display/Recent';
 import Content from './components/display/Content';
 import SignInForm from './components/SignInForm';
 import AccountConfirmation from './components/AccountConfirmation';
-import WithAuth from './components/withAuth';
-
-const HomeWithAuth = WithAuth(Home);
 
 const router = createBrowserRouter([
   {
-    element: <HomeWithAuth />,
+    element: <Home />,
     children: [
       { path: '/', element: <Recent /> },
       { path: '/content/:id', element: <Content /> },

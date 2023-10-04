@@ -8,36 +8,54 @@ export const signinRequest = createAsyncThunk('signIn/signInRequest', async ({ r
   return response.headers.authorization;
 });
 
+export const logoutRequest = createAsyncThunk('signIn/logoutRequest', async (token) => {
+  axios.delete(`${url}logout`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: token,
+    },
+  });
+  sessionStorage.clear();
+});
+
 const signinSlice = createSlice({
   name: 'signin',
   initialState: {
-    signedIn: false,
+    token: sessionStorage.getItem('token') ? sessionStorage.getItem('token') : null,
+    isSignedIn: !!sessionStorage.getItem('token'),
     isLoading: true,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    setIsSignedIn: (state, action) => ({
+      ...state, isSignedIn: action.payload,
+    }),
+  },
   extraReducers(builder) {
     builder
       .addCase(signinRequest.pending, (state) => ({
         ...state,
+        isSignedIn: false,
         isLoading: true,
-        signedIn: false,
       }))
       .addCase(signinRequest.fulfilled, (state, action) => {
         sessionStorage.setItem('token', action.payload);
         return ({
           ...state,
+          token: action.payload,
+          isSignedIn: true,
           isLoading: false,
-          signedIn: true,
-        });
+        }
+        );
       })
       .addCase(signinRequest.rejected, (state, action) => ({
         ...state,
+        isSignedIn: false,
         isLoading: false,
-        signedIn: false,
         error: action.payload,
       }));
   },
 });
 
+export const { setIsSignedIn } = signinSlice.actions;
 export default signinSlice.reducer;
