@@ -3,23 +3,8 @@ import axios from 'axios';
 import { url } from '../requestKeys.json';
 
 export const fetchContent = createAsyncThunk('content/fetchContent', async (headers) => {
-  try {
-    const content = [];
-
-    const coursesResp = await axios.get(`${url}courses`, { headers });
-    const manualsResp = await axios.get(`${url}manuals`, { headers });
-    const programsResp = await axios.get(`${url}programs`, { headers });
-
-    content.push({
-      courses: coursesResp.data,
-      manuals: manualsResp.data,
-      programs: programsResp.data,
-    });
-
-    return content[0];
-  } catch (error) {
-    return error.message;
-  }
+  const contentResp = await axios.get(`${url}content`, { headers });
+  return contentResp.data;
 });
 
 const initialState = {
