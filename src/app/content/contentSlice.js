@@ -1,30 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { url } from '../requestKeys.json';
 
-const headers = {
-  'Content-Type': 'application/json',
-  Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI5MzI5NmRiMi1jZjBkLTRkOGUtYjljZC04NmIzYmUyN2JlY2IiLCJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjk1NDA0MTA5LCJleHAiOjE2OTU0MDU5MDl9.jEzP2kwezoSuZEc_r4SW_mQqmrX3kkfYulFvbjlXXHo',
-};
-
-export const fetchContent = createAsyncThunk('content/fetchContent', async () => {
-  const url = 'http://127.0.0.1:4000/';
-  try {
-    const content = [];
-
-    const coursesResp = await axios.get(`${url}courses`, { headers });
-    const manualsResp = await axios.get(`${url}manuals`, { headers });
-    const programsResp = await axios.get(`${url}programs`, { headers });
-
-    content.push({
-      courses: coursesResp.data,
-      manuals: manualsResp.data,
-      programs: programsResp.data,
-    });
-
-    return content[0];
-  } catch (error) {
-    return error.message;
-  }
+export const fetchContent = createAsyncThunk('content/fetchContent', async (headers) => {
+  const contentResp = await axios.get(`${url}content`, { headers });
+  return contentResp.data;
 });
 
 const initialState = {

@@ -5,39 +5,57 @@ import { url } from '../requestKeys.json';
 export const signinRequest = createAsyncThunk('signIn/signInRequest', async ({ route, data }) => {
   const response = await axios.post(`${url}${route}`, data);
 
-  if (route === 'login') {
-    return {
-      data: response.data,
-      token: response.headers.authorization,
-    };
-  }
-  return response.data;
+  return response.headers.authorization;
+});
+
+export const logoutRequest = createAsyncThunk('signIn/logoutRequest', async (token) => {
+  axios.delete(`${url}logout`, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: token,
+    },
+  });
+  sessionStorage.clear();
 });
 
 const signinSlice = createSlice({
   name: 'signin',
   initialState: {
-    token: '',
+    token: sessionStorage.getItem('token') ? sessionStorage.getItem('token') : null,
+    isSignedIn: !!sessionStorage.getItem('token'),
     isLoading: true,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    setIsSignedIn: (state, action) => ({
+      ...state, isSignedIn: action.payload,
+    }),
+  },
   extraReducers(builder) {
     builder
       .addCase(signinRequest.pending, (state) => ({
-        ...state, isLoading: true,
-      }))
-      .addCase(signinRequest.fulfilled, (state, action) => ({
         ...state,
-        isLoading: false,
-        token: action.payload.token,
+        isSignedIn: false,
+        isLoading: true,
       }))
+      .addCase(signinRequest.fulfilled, (state, action) => {
+        sessionStorage.setItem('token', action.payload);
+        return ({
+          ...state,
+          token: action.payload,
+          isSignedIn: true,
+          isLoading: false,
+        }
+        );
+      })
       .addCase(signinRequest.rejected, (state, action) => ({
         ...state,
+        isSignedIn: false,
         isLoading: false,
         error: action.payload,
       }));
   },
 });
 
+export const { setIsSignedIn } = signinSlice.actions;
 export default signinSlice.reducer;
