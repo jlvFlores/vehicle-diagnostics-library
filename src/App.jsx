@@ -2,6 +2,7 @@ import { Navigate, RouterProvider, redirect } from 'react-router';
 import { createBrowserRouter } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Layout from './components/Layout';
+import ErrorPage from './components/ErrorPage';
 import Home from './components/Home';
 import Recent from './components/display/Recent';
 import Content from './components/display/Content';
@@ -16,6 +17,7 @@ const App = () => {
       createBrowserRouter([
         {
           element: <Layout />,
+          errorElement: <ErrorPage />,
           children: [
             {
               element: <Home />,
