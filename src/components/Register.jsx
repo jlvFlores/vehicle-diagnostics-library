@@ -1,21 +1,22 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { registerRequest } from '../app/register/registerSlice';
+import { registerRequest, setMessage } from '../app/register/registerSlice';
 
 const Register = () => {
   const dispatch = useDispatch();
+  const { message } = useSelector((store) => store.register);
   const [formData, setFormData] = useState({ email: '', password: '', confirmPassword: '' });
 
   const handleSubmit = (e) => {
+    dispatch(setMessage(''));
     e.preventDefault();
-
     if (formData.password !== formData.confirmPassword) {
-      return;
+      dispatch(setMessage('Passwords do not match'));
+    } else {
+      dispatch(registerRequest({ user: { email: formData.email, password: formData.password } }));
+      setFormData({ email: '', password: '', confirmPassword: '' });
     }
-
-    dispatch(registerRequest({ user: { email: formData.email, password: formData.password } }));
-    setFormData({ email: '', password: '', confirmPassword: '' });
   };
 
   const handleChange = (e) => {
@@ -25,6 +26,7 @@ const Register = () => {
 
   return (
     <main>
+      <p>{message}</p>
       <form onSubmit={handleSubmit}>
         <input type="email" name="email" id="email" placeholder="Email" autoComplete="email" value={formData.email} onChange={handleChange} required />
         <input type="password" name="password" id="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
