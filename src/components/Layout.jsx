@@ -3,7 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 
 const Layout = () => (
-  <main>
+  <main className="home">
     <Header />
     <Outlet />
     <Footer />

@@ -23,7 +23,7 @@ const confirmationSlice = createSlice({
       .addCase(confirmationRequest.fulfilled, (state, action) => ({
         ...state,
         isLoading: false,
-        status: action.payload.status,
+        status: action.payload,
       }))
       .addCase(confirmationRequest.rejected, (state, action) => ({
         ...state,
