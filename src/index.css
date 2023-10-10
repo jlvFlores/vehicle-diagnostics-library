@@ -16,7 +16,7 @@
   color: var(--light-one);
 }
 
-main {
+.home {
   width: 100vw;
   height: 100vh;
   display: grid;
@@ -197,4 +197,19 @@ iframe {
   cursor: pointer;
   font-size: 1rem;
   text-decoration: underline;
+}
+
+.container {
+  padding: 3rem;
+}
+
+.box {
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
