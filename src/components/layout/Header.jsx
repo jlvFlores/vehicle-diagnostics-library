@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { logoutRequest, setIsLoggedIn } from '../app/login/loginSlice';
+import { logoutRequest, setIsLoggedIn } from '../../app/login/loginSlice';
 
 const Header = () => {
   const dispatch = useDispatch();

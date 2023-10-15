@@ -1,14 +1,13 @@
 import { Navigate, RouterProvider, redirect } from 'react-router';
 import { createBrowserRouter } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import Layout from './components/Layout';
 import ErrorPage from './components/ErrorPage';
-import Home from './components/Home';
+import Home from './components/layout/Home';
 import Recent from './components/display/Recent';
 import Content from './components/display/Content';
-import Login from './components/Login';
-import Register from './components/Register';
-import AccountConfirmation from './components/AccountConfirmation';
+import Login from './components/authentication/Login';
+import Register from './components/authentication/Register';
+import AccountConfirmation from './components/authentication/AccountConfirmation';
 
 const App = () => {
   const { isLoggedIn } = useSelector((store) => store.login);
@@ -16,16 +15,11 @@ const App = () => {
     <RouterProvider router={
       createBrowserRouter([
         {
-          element: <Layout />,
+          element: <Home />,
           errorElement: <ErrorPage />,
           children: [
-            {
-              element: <Home />,
-              children: [
-                { path: '/', element: <Recent /> },
-                { path: '/content/:id', element: <Content /> },
-              ],
-            },
+            { path: '/', element: <Recent /> },
+            { path: '/content/:id', element: <Content /> },
           ],
           loader: () => (!isLoggedIn ? redirect('/login') : null),
         },

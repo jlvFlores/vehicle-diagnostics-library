@@ -1,7 +1,7 @@
 const Footer = () => (
-  <div>
+  <footer>
     <p>&#169; 2023 EMAT, All Rights Reserved</p>
-  </div>
+  </footer>
 );
 
 export default Footer;
