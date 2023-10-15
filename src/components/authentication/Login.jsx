@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { loginRequest } from '../app/login/loginSlice';
+import { loginRequest } from '../../app/login/loginSlice';
 
 const Login = () => {
   const dispatch = useDispatch();

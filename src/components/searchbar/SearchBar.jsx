@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSearchValue } from '../app/searchbar/searchbarSlice';
+import { setSearchValue } from '../../app/searchbar/searchbarSlice';
 import SearchItem from './SearchItem';
 
 const SearchBar = () => {

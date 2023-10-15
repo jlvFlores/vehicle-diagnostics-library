@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { registerRequest, setMessage } from '../app/register/registerSlice';
+import { registerRequest, setMessage } from '../../app/register/registerSlice';
 
 const Register = () => {
   const dispatch = useDispatch();

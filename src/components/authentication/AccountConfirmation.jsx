@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useSearchParams } from 'react-router-dom';
-import { confirmationRequest } from '../app/confirmation/confirmationSlice';
+import { confirmationRequest } from '../../app/confirmation/confirmationSlice';
 
 const AccountConfirmation = () => {
   const dispatch = useDispatch();
