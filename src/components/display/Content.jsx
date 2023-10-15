@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import Courses from './content/Courses';
 import Manuals from './content/Manuals';
 import Programs from './content/Programs';
+import Ads from '../Ads';
 
 const Content = () => {
   const { id } = useParams();
@@ -29,7 +30,10 @@ const Content = () => {
   };
 
   return (
-    <>{renderContent()}</>
+    <>
+      {renderContent()}
+      <Ads />
+    </>
   );
 };
 
