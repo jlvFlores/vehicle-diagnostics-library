@@ -25,17 +25,22 @@ const Register = () => {
   };
 
   return (
-    <main>
-      <p>{message}</p>
-      <form onSubmit={handleSubmit}>
-        <input type="email" name="email" id="email" placeholder="Email" autoComplete="email" value={formData.email} onChange={handleChange} required />
-        <input type="password" name="password" id="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
-        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" value={formData.confirmPassword} onChange={handleChange} required />
-        <input type="submit" value="register" className="capitalize" />
-      </form>
-      <div>
-        <p>Already have an account?</p>
-        <Link to="/login">Login now</Link>
+    <main className="signin-page">
+      <div className="signin-container br">
+        <div className="welcome-message">
+          <h2>Welcome</h2>
+          <br />
+          <p>Already have an account?</p>
+          <Link to="/login">Login now</Link>
+        </div>
+        <form onSubmit={handleSubmit} className="signin-form">
+          <h2 className="center">Sign up</h2>
+          <input type="email" name="email" id="email" placeholder="Email" autoComplete="email" value={formData.email} onChange={handleChange} required />
+          <input type="password" name="password" id="password" placeholder="Password" value={formData.password} onChange={handleChange} required />
+          <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" value={formData.confirmPassword} onChange={handleChange} required />
+          <input type="submit" value="register" className="capitalize btn" />
+          <p className="center">{message}</p>
+        </form>
       </div>
     </main>
   );
