@@ -5,13 +5,13 @@
 }
 
 :root {
-  --color-light:       #ffffff;
-  --color-shade-one:   #0ce6f2;
-  --color-shade-two:   #0098db;
+  --color-light: #fff;
+  --color-shade-one: #0ce6f2;
+  --color-shade-two: #0098db;
   --color-shade-three: #1e579c;
-  --color-shade-four:  #203562;
-  --color-shade-five:  #252446;
-  --color-shade-six:   #201533;
+  --color-shade-four: #203562;
+  --color-shade-five: #252446;
+  --color-shade-six: #201533;
 
   background-color: var(--color-shade-six);
   color: var(--color-light);
@@ -80,11 +80,39 @@ a {
 }
 
 .signin-form > * {
-  padding: .5rem;
+  padding: 0.5rem;
+}
+
+/* HEADER */
+header,
+footer {
+  background-color: var(--color-shade-four);
+  padding: 0.25rem 0.5rem;
+  width: 100vw;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.header-link {
+  color: var(--color-shade-two);
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 /* HOMEPAGE */
-.home {
+.home-layout {
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -92,11 +120,174 @@ a {
   justify-content: space-between;
 }
 
-/* HEADER */
-header,
-footer {
+.homepage {
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "search display"
+    "search ad";
+  height: 90vh;
+  overflow: hidden;
+}
+
+/* SEARCH */
+#search-section {
+  grid-area: search;
+  background-color: var(--color-shade-five);
   display: flex;
-  width: 100vw;
-  border-bottom: red solid 1px;
-  border-top: red solid 1px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#search-form {
+  width: 100%;
+  min-height: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-shade-three);
+  padding: 0.5rem 0;
+}
+
+#search-form > * {
+  width: 95%;
+}
+
+.checkbox-filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-item {
+  display: flex;
+  align-items: center;
+  padding-left: 0.5rem;
+  width: 100%;
+  height: 2rem;
+}
+
+.search-item:nth-child(odd) {
+  background-color: var(--color-shade-four);
+}
+
+/* DISPLAY */
+#display-section {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  grid-area: display;
+  padding: 2rem;
+  overflow-x: hidden;
+  height: 89vh;
+}
+
+iframe {
+  box-shadow: 0 0 5px 0 var(--primary-color);
+  border: none;
+  width: 100%;
+}
+
+/* COURSES */
+.primary-vid {
+  aspect-ratio: 16/9;
+}
+
+.primary-vid-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+  width: 100%;
+}
+
+.slider-box {
+  width: 20%;
+  background-color: transparent;
+  border: none;
+  color: var(--light-one);
+  text-align: start;
+}
+
+.slider-box > img {
+  box-shadow: 0 0 5px 0 var(--primary-color);
+  width: 100%;
+}
+
+/* MANUALS */
+.manual-header {
+  background-color: var(--primary-color);
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.download-btn {
+  background-color: var(--color-light);
+  color: var(--color-shade-four);
+  border: none;
+  border-radius: 5px;
+  padding: 0 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.manual-iframe {
+  height: 72.5vh;
+}
+
+/* PROGRAMS */
+.program-container {
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.download-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.download-header > a {
+  color: #838cc8;
+  cursor: pointer;
+  font-size: 1rem;
+  text-decoration: underline;
+}
+
+.container {
+  padding: 3rem;
+}
+
+.box {
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* AD */
+.ad-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15vh;
+  background-color: var(--color-light);
 }
