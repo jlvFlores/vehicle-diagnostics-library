@@ -20,14 +20,16 @@ const Home = () => {
   }, [dispatch, token, isLoggedIn]);
 
   return (
-    <main className="home">
+    <div className="home-layout">
       <Header />
-      <SearchBar />
-      <section id="display-section">
-        <Outlet />
-      </section>
+      <main className="homepage">
+        <SearchBar />
+        <section id="display-section">
+          <Outlet />
+        </section>
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 };
 

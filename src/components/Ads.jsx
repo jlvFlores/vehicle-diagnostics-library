@@ -1,5 +1,5 @@
 const Ads = () => (
-  <div>Anuncio</div>
+  <div className="ad-container box-shadow">Anuncio</div>
 );
 
 export default Ads;
