@@ -33,7 +33,7 @@ const registerSlice = createSlice({
       }))
       .addCase(registerRequest.fulfilled, (state, action) => (action.payload.message
         ? { ...state, isLoading: false, message: action.payload.message }
-        : { ...state, isLoading: false, message: 'Registration successful, please verify your email before login in' }))
+        : { ...state, isLoading: false, message: 'Registration successful, please confirm your email before login in' }))
       .addCase(registerRequest.rejected, (state, action) => ({
         ...state,
         error: action.payload,

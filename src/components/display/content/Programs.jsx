@@ -4,7 +4,7 @@ const Programs = ({ selectedProgram }) => (
   <div className="program-container">
     <div className="download-header">
       <p>IMAGE</p>
-      <a href={selectedProgram.file} download="file.pdf">{selectedProgram.title}</a>
+      <a href={selectedProgram.url} target="_blank" rel="noopener noreferrer">{selectedProgram.title}</a>
     </div>
     <p>{selectedProgram.description}</p>
   </div>

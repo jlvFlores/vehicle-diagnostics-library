@@ -5,70 +5,139 @@
 }
 
 :root {
-  --primary-color: #1e2348;
-  --dark-one: #1e1e1e;
-  --dark-two: #242424;
-  --dark-three: #292929;
-  --light-one: #fff;
-  --light-two: #d4d4d4;
+  --color-light: #fff;
+  --color-shade-one: #0ce6f2;
+  --color-shade-two: #0098db;
+  --color-shade-three: #1e579c;
+  --color-shade-four: #203562;
+  --color-shade-five: #252446;
+  --color-shade-six: #201533;
 
-  background-color: var(--dark-one);
-  color: var(--light-one);
+  background-color: var(--color-shade-six);
+  color: var(--color-light);
 }
 
-.home {
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  grid-template-areas:
-    "nav    nav"
-    "search display";
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: 10vh 1fr;
+/* GLOBAL */
+.br {
+  border-radius: 10px;
+}
+
+.box-shadow {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }
 
 .capitalize {
   text-transform: capitalize;
 }
 
-/* HEADER */
-header {
-  background-color: var(--dark-three);
-  display: grid;
-  grid-area: nav;
-  grid-template-columns: 1fr 3fr;
+.btn {
+  background-color: var(--color-shade-four);
+  border: none;
+  color: var(--light-one);
 }
 
-.logo {
+.center {
   text-align: center;
+}
+
+a {
+  color: var(--color-shade-two);
+}
+
+/* SIGN-IN */
+.signin-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.signin-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: rgba(255, 255, 255, 0.025);
+}
+
+.welcome-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-shade-four);
+  border-radius: 10px 0 0 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  height: 50vh;
+  padding: 2rem;
+}
+
+.signin-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  gap: 0.5rem;
+}
+
+.signin-form > * {
+  padding: 0.5rem;
+}
+
+/* HEADER */
+header,
+footer {
+  background-color: var(--color-shade-four);
+  padding: 0.25rem 0.5rem;
+  width: 100vw;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
-  align-items: end;
-  padding-right: 1rem;
+  align-items: center;
+  padding: 0 1rem;
 }
 
 .header-link {
-  color: var(--primary-color);
-  background-color: var(--light-two);
-  border-radius: 10px 10px 0 0;
-  border: 1px solid var(--light-one);
-  font-size: 1.5rem;
-  padding: 0 1rem;
+  color: var(--color-shade-two);
   text-decoration: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
-.return-link {
-  background-color: var(--primary-color);
-  color: var(--light-one);
+/* HOMEPAGE */
+.home-layout {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.homepage {
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "search display"
+    "search ad";
+  height: 90vh;
+  overflow: hidden;
 }
 
 /* SEARCH */
 #search-section {
   grid-area: search;
-  background-color: var(--light-two);
+  background-color: var(--color-shade-five);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 #search-form {
@@ -78,12 +147,12 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--primary-color);
+  background-color: var(--color-shade-three);
   padding: 0.5rem 0;
 }
 
 #search-form > * {
-  width: 90%;
+  width: 95%;
 }
 
 .checkbox-filters {
@@ -93,7 +162,6 @@ nav {
 }
 
 .search-item {
-  color: var(--primary-color);
   display: flex;
   align-items: center;
   padding-left: 0.5rem;
@@ -102,7 +170,7 @@ nav {
 }
 
 .search-item:nth-child(odd) {
-  background-color: var(--light-one);
+  background-color: var(--color-shade-four);
 }
 
 /* DISPLAY */
@@ -113,6 +181,7 @@ nav {
   grid-area: display;
   padding: 2rem;
   overflow-x: hidden;
+  height: 89vh;
 }
 
 iframe {
@@ -162,8 +231,8 @@ iframe {
 }
 
 .download-btn {
-  background-color: var(--light-one);
-  color: var(--primary-color);
+  background-color: var(--color-light);
+  color: var(--color-shade-four);
   border: none;
   border-radius: 5px;
   padding: 0 0.5rem;
@@ -178,7 +247,7 @@ iframe {
 
 /* PROGRAMS */
 .program-container {
-  background-color: var(--dark-three);
+  background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   height: 80vh;
@@ -212,4 +281,13 @@ iframe {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+}
+
+/* AD */
+.ad-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 15vh;
+  background-color: var(--color-light);
 }

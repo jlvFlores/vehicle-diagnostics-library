@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSearchValue } from '../app/searchbar/searchbarSlice';
+import { setSearchValue } from '../../app/searchbar/searchbarSlice';
 import SearchItem from './SearchItem';
+import Ads from '../Ads';
 
 const SearchBar = () => {
   const dispatch = useDispatch();
@@ -58,48 +59,51 @@ const SearchBar = () => {
 
   return (
     <section id="search-section">
-      <form id="search-form">
-        <input id="search-input-field" type="text" placeholder="search by name" onChange={handleSearchInput} />
-        <div className="checkbox-filters">
-          <label htmlFor="show-all-checkbox">
-            <input
-              type="checkbox"
-              id="show-all-checkbox"
-              checked={showAllCheckbox}
-              onChange={() => handleCheckboxChange('show-all')}
-            />
-            Show all
-          </label>
-          <label htmlFor="courses-checkbox">
-            <input
-              type="checkbox"
-              id="courses-checkbox"
-              checked={checkboxStates[0]}
-              onChange={() => handleCheckboxChange(0)}
-            />
-            Courses
-          </label>
-          <label htmlFor="manuals-checkbox">
-            <input
-              type="checkbox"
-              id="manuals-checkbox"
-              checked={checkboxStates[1]}
-              onChange={() => handleCheckboxChange(1)}
-            />
-            Manuals
-          </label>
-          <label htmlFor="programs-checkbox">
-            <input
-              type="checkbox"
-              id="programs-checkbox"
-              checked={checkboxStates[2]}
-              onChange={() => handleCheckboxChange(2)}
-            />
-            Programs
-          </label>
-        </div>
-      </form>
-      <div>{renderSearchItems()}</div>
+      <div>
+        <form id="search-form">
+          <input id="search-input-field" type="text" placeholder="Search by name" onChange={handleSearchInput} />
+          <div className="checkbox-filters">
+            <label htmlFor="show-all-checkbox">
+              <input
+                type="checkbox"
+                id="show-all-checkbox"
+                checked={showAllCheckbox}
+                onChange={() => handleCheckboxChange('show-all')}
+              />
+              Show all
+            </label>
+            <label htmlFor="courses-checkbox">
+              <input
+                type="checkbox"
+                id="courses-checkbox"
+                checked={checkboxStates[0]}
+                onChange={() => handleCheckboxChange(0)}
+              />
+              Courses
+            </label>
+            <label htmlFor="manuals-checkbox">
+              <input
+                type="checkbox"
+                id="manuals-checkbox"
+                checked={checkboxStates[1]}
+                onChange={() => handleCheckboxChange(1)}
+              />
+              Manuals
+            </label>
+            <label htmlFor="programs-checkbox">
+              <input
+                type="checkbox"
+                id="programs-checkbox"
+                checked={checkboxStates[2]}
+                onChange={() => handleCheckboxChange(2)}
+              />
+              Programs
+            </label>
+          </div>
+        </form>
+        <div>{renderSearchItems()}</div>
+      </div>
+      <Ads />
     </section>
   );
 };
